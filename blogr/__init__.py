@@ -12,4 +12,7 @@ def create_app():
     from blogr import auth
     app.register_blueprint(auth.bp)
     
+    from blogr import post
+    app.register_blueprint(post.bp)
+    
     return app
