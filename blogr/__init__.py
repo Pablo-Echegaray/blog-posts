@@ -1,9 +1,12 @@
 from flask import Flask
 
+
 def create_app():
     
     # Crear aplicación de flask
     app = Flask(__name__)
+    
+    app.config.from_object('config.Config')
     
     #Registrar vistas
     from blogr import home
