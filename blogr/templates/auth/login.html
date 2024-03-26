@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogPosts - Iniciar sesón</title>
+{% block header %}
 
-    <!-- Estilos de bootstrap y de app -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/login.css">
-</head>
+{% endblock %}  
+{% block content %}
 
-<body>
     <!-- Login -->
     <main class="form-signin w-100 m-auto text-center">
         <img class="mb-4" src="../img/bp-dark.png" alt="" width="72">
-        <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
+        <h1 class="h3 mb-3 fw-normal">{% block title %} Iniciar Sesión {% endblock %}</h1>
         <form>
             <div class="form-floating">
                 <input type="email" class="form-control" id="email" placeholder="name@example.com">
@@ -39,9 +34,3 @@
             <a href="login.html">Crear cuenta</a>
         </p>
     </main>
-
-
-    <script src="../js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
