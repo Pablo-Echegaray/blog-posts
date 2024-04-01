@@ -27,3 +27,7 @@ def create_app():
         db.create_all()
     
     return app
+
+# pablo 
+# pablo@gmail.com
+# 12345678
