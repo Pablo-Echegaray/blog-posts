@@ -54,7 +54,7 @@
                                 Mis Blogs
                             </a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ url_for('auth.profile') }}">
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ url_for('auth.profile', id = g.user.id) }}">
                                 <span class="d-inline-block bg-info rounded-circle p-1"></span>
                                 Perfil
                             </a>
