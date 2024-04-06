@@ -84,19 +84,10 @@ def login_required(view):
 # Editar Perfil
 from werkzeug.utils import secure_filename
 
-def get_photo(id):
-    user = User.query.get_or_404(id)
-    photo = None
-    
-    if photo != None:
-        photo = user.photo
-    return photo    
-
 @bp.route('/profile/<int:id>', methods = ('GET', 'POST'))
 @login_required
 def profile(id):
     user = User.query.get_or_404(id)
-    photo = get_photo(id)
     
     if request.method == 'POST':
         user.username = request.form.get('username')
@@ -107,7 +98,11 @@ def profile(id):
             user.password = generate_password_hash(password)
         elif len(password) > 0 and len(password) < 6:
             error = 'La contraseña debe tener más de 5 carateres'
-            
+        # Ver esto porque cuando no se actualiza la contraseña y se le envia el campo vacio, en la bd actualiza la constraseña a vacia
+        elif len(password) == 0:
+            user.password = generate_password_hash(user.password)
+            #user.password = user.password
+         
         if request.files['photo']:
             photo = request.files['photo']   
             photo.save(f'blogr/static/media/{secure_filename(photo.filename)}')
@@ -121,4 +116,4 @@ def profile(id):
         
         flash(error)
                
-    return render_template('auth/profile.html', user = user, photo = photo)
+    return render_template('auth/profile.html', user = user)
